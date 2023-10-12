@@ -43,11 +43,10 @@ h1 {
   display: block;
   margin: 10px auto;
   padding: 10px 20px;
-  background-color: #0074d9;
-  color: #fff;
-  border: none;
+  background-color: white;
+  color: #000; /* Black font color */
+  border: 1px solid #000; /* Add a black border for contrast */
   border-radius: 5px;
   cursor: pointer;
   font-size: 18px;
 }
-
