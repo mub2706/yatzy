@@ -3,7 +3,7 @@ body {
   margin: 0;
   padding: 0;
   background: linear-gradient(to right, white 50%, black 50%);
-  font-family: Arial Black, sans-serif;
+  font-family: Arial, sans-serif;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -20,7 +20,7 @@ header {
 }
 
 h1 {
-  font-size: 48px;
+  font-size: 24px;
 }
 
 /* Animated Dice Image Styles */
@@ -43,9 +43,9 @@ h1 {
   display: block;
   margin: 10px auto;
   padding: 10px 20px;
-  background-color: white;
-  color: #000; /* Black font color */
-  border: 1px solid #000; /* Add a black border for contrast */
+  background-color: #0074d9;
+  color: #fff;
+  border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 18px;
