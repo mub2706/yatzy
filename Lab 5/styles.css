@@ -1,1 +1,53 @@
+/* styles.css */
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to right, white 50%, black 50%);
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Header Styles */
+header {
+  background: white;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+  flex: 1;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+/* Animated Dice Image Styles */
+.dice-image {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+/* Button Container Styles */
+.button-container {
+  background: black;
+  text-align: center;
+  padding: 20px;
+  flex: 1;
+}
+
+/* Button Styles */
+.button-container button {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 20px;
+  background-color: #0074d9;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+}
 
