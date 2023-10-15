@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>The Game</title>
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" href="/decode.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial Black, sans-serif;
+}
+
+nav {
+  height: 80px;
+  background: white;
+  display: flex;
+  font-size: 1.3rem;
+  text-align: center;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0rem calc((100vw - 1300px) / 2);
+}
+
+.logo {
+  color: black;
+  font-size: 1.7rem;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0 2rem;
+}
+
+nav a {
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+  padding: 0 1.3rem;
+  margin-right: auto;
+}
+
+button {
+  padding: 1rem 3rem;
+  font-size: 1rem;
+  border: none;
+  color: white;
+  background: black;
+  cursor: pointer;
+  border-radius: 50px;
+}
+
+.bottom-right-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+  background: white;
+  color: black;
+}
+.content-table {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial Black, sans-serif;
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  min-width: 400px;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px black(0,0,0,0.15);
+}
+
+.content-table thead tr {
+  background-color: black;
+  color: white;
+  text-align: left;
+  font-weight: bold;
+}
+
+.content-table th,
+.content-table td {
+  padding: 12px 15px;
+}
+
+.content-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+  background-color: #dddddd;
+}
+
+.content-table tbody tr:last-of-type {
+  border-bottom: 2px solid black;
+}
+
+/*TABLE 2*/
+
+.content-table2 {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial Black, sans-serif;
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  min-width: 400px;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px black(0,0,0,0.15);
+}
+
+.content-table2 thead tr {
+  background-color: black;
+  color: white;
+  text-align: left;
+  font-weight: bold;
+}
+
+.content-table2 th,
+.content-table2 td {
+  padding: 12px 15px;
+}
+
+.content-table2 tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.content-table2 tbody tr:nth-of-type(even) {
+  background-color: #dddddd;
+}
+
+.content-table2 tbody tr:last-of-type {
+  border-bottom: 2px solid black;
+}
+
+/*TABLE 3*/
+
+.content-table3 {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial Black, sans-serif;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 0.9em;
+  min-width: 300px;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px black(0,0,0,0.15);
+}
+
+.content-table3 thead tr {
+  background-color: black;
+  color: white;
+  text-align: left;
+  font-weight: bold;
+}
+
+.content-table3 th,
+.content-table3 td {
+  padding: 12px 15px;
+}
+
+.content-table3 tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.content-table3 tbody tr:nth-of-type(even) {
+  background-color: #dddddd;
+}
+
+.content-table3 tbody tr:last-of-type {
+  border-bottom: 2px solid black;
+}
+</style>
+
+</head>
+<body>
+    <nav>
+        <div class="logo">Mulex</div>
+        <div class="nav-items">
+            <a href="/">Restart Game</a> <a href="/">Leave Game</a> 
+        </div>
+    </nav>
+    <table class="content-table"
+    style="border:1px solid black;margin-left:auto;margin-right:auto;">
+        <thead>
+            <tr>
+                <th>Upper Section</th>
+                <th>Round 1</th>
+                <th>Round 2</th>
+                <th>Round 3</th>
+                <th>Round 4</th>
+                <th>Round 5</th>
+                <th>Round 6</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Aces</td>
+            </tr>
+            <tr>
+                <td>Twos</td>
+            </tr>
+            <tr>
+                <td>Threes</td>
+            </tr>
+            <tr>
+                <td>Fours</td>
+            </tr>
+            <tr>
+                <td>Fives</td>
+            </tr>
+            <tr>
+                <td>Sixes</td>
+            </tr>
+            <tr>
+                <td>Top Total</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="content-table2"
+    style="border:1px solid black;margin-left:auto;margin-right:auto;">
+        <thead>
+            <tr>
+                <th>Lower Section</th>
+                <th>Round 1</th>
+                <th>Round 2</th>
+                <th>Round 3</th>
+                <th>Round 4</th>
+                <th>Round 5</th>
+                <th>Round 6</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Three of A Kind</td>
+            </tr>
+            <tr>
+                <td>Four of A Kind</td>
+            </tr>
+            <tr>
+                <td>Full House</td>
+            </tr>
+            <tr>
+                <td>Small Straight</td>
+            </tr>
+            <tr>
+                <td>Large Straight</td>
+            </tr>
+            <tr>
+                <td>Yatzy</td>
+            </tr>
+            <tr>
+                <td>Chance</td>
+            </tr>
+            <tr>
+                <td>Final Total</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="content-table3">
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Ones</td>
+                <td class="score">-</td>
+            </tr>
+            <tr>
+                <td>Twos</td>
+                <td class="score">-</td>
+            </tr>
+            <tr>
+                <td>Threes</td>
+                <td class="score">-</td>
+            </tr>
+            <tr>
+                <td>Fours</td>
+                <td class="score">-</td>
+            </tr>
+            <tr>
+                <td>Fives</td>
+                <td class="score">-</td>
+            </tr>
+            <tr>
+                <td>Sixes</td>
+                <td class="score">-</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>Total</td>
+                <td class="total">0</td>
+            </tr>
+        </tfoot>
+    </table>
+    <button class="bottom-right-button">Throw Dice</button>
+</body>
+</html>
