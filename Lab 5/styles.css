@@ -1,52 +1,97 @@
-/* styles.css */
-body {
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background: linear-gradient(to right, white 50%, black 50%);
-  font-family: Arial, sans-serif;
-  height: 100vh;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial Black, sans-serif;
+}
+
+nav {
+  height: 80px;
+  background: white;
+  display: flex;
+  font-size: 1.3rem;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0rem calc((100vw - 1300px) / 2);
+}
+
+.logo {
+  color: black;
+  font-size: 1.7rem;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0 2rem;
+}
+
+nav a {
+  font-size: 1.3rem;
+  text-decoration: none;
+  color: black;
+  padding: 0 1.3rem;
+}
+
+.dice {
+  background: white;
+}
+
+.dice-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 95vh;
+  padding: 3rem calc((100vw - 1300px) / 2);
+  text-align: center; /* Center-align content in the container */
+  margin: 0 auto; /* Center horizontally */
+}
+
+.column-left {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: flex-start;
+  color: black;
+  padding: 0rem 2rem;
 }
 
-/* Header Styles */
-header {
-  background: white;
-  text-align: center;
-  padding: 20px;
-  position: relative;
-  flex: 1;
+.column-left h1 {
+  margin-bottom: 1rem;
+  font-size: 3rem;
 }
 
-h1 {
-  font-size: 24px;
+.column-left p {
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  line-height: 1.5;
 }
 
-/* Animated Dice Image Styles */
-.dice-image {
-  display: block;
-  margin: 0 auto;
-  max-width: 100%;
-}
-
-/* Button Container Styles */
-.button-container {
-  background: black;
-  text-align: center;
-  padding: 20px;
-  flex: 1;
-}
-
-/* Button Styles */
-.button-container button {
-  display: block;
-  margin: 10px auto;
-  padding: 10px 20px;
-  background-color: #0074d9;
-  color: #fff;
+button {
+  padding: 1rem 3rem;
+  font-size: 1rem;
   border: none;
-  border-radius: 5px;
+  color: white;
+  background: black;
   cursor: pointer;
-  font-size: 18px;
+  border-radius: 50px;
+}
+
+button:hover {
+  background: white;
+  color: black;
+}
+
+.column-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0rem 2rem;
+}
+
+.dice-image {
+  width: 80%;
+  height: 50%;
+}
+
+@media screen and (max-width: 800px) {
+  .dice-container {
+    grid-template-columns: 1fr;
+  }
 }
