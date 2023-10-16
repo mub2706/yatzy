@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+
     <title>The Game</title>
+    <!-- Favicon link -->
     <link rel="shortcut icon" href="/assets/favicon.ico">
+    <!-- Link to an external stylesheet (decode.css) -->
     <link rel="stylesheet" href="/decode.css">
+    <!-- Set the viewport for responsive design -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-
+    
+/* Global styles */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -15,6 +20,7 @@
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial Black, sans-serif;
 }
 
+/* Navigation bar styles */
 nav {
   height: 80px;
   background: white;
@@ -43,6 +49,7 @@ nav a {
   margin-right: auto;
 }
 
+/* Button styles */
 button {
   padding: 1rem 3rem;
   font-size: 1rem;
@@ -53,6 +60,7 @@ button {
   border-radius: 50px;
 }
 
+/* Button style for a button in the bottom right corner */
 .bottom-right-button {
     position: fixed;
     bottom: 20px;
@@ -68,6 +76,8 @@ button:hover {
   background: white;
   color: black;
 }
+
+/* Table styles (content-table) */
 .content-table {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial Black, sans-serif;
   border-collapse: collapse;
@@ -104,6 +114,7 @@ button:hover {
 }
 
 /*TABLE 2*/
+/* Styles for a second table (content-table2) */
 
 .content-table2 {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial Black, sans-serif;
@@ -141,6 +152,7 @@ button:hover {
 }
 
 /*TABLE 3*/
+ /* Styles for a third table (content-table3) */
 
 .content-table3 {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial Black, sans-serif;
@@ -181,11 +193,13 @@ button:hover {
 </head>
 <body>
     <nav>
+        <!-- Logo -->
         <div class="logo">Mulex</div>
         <div class="nav-items">
             <a href="/">Restart Game</a> <a href="/">Leave Game</a> 
         </div>
     </nav>
+     <!-- First table with class "content-table" -->
     <table class="content-table"
     style="border:1px solid black;margin-left:auto;margin-right:auto;">
         <thead>
