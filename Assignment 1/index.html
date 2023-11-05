@@ -1,1 +1,56 @@
-
+<!-- Define the document type and set the language to English -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Set the character encoding to UTF-8 for proper text rendering -->
+    <meta charset="UTF-8" />
+    <!-- Configure the viewport for responsive design -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />    
+    <!-- Set the title of the webpage that appears in the browser tab -->
+    <title>The Official Yatzy Game - Mulex </title>
+    <!-- Link the external CSS stylesheet for styling -->
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <!-- Create a navigation section -->
+    <nav>
+        <!-- Define a div with the class "logo" for the game's logo -->
+        <div class="logo">Mulex</div>
+        <!-- Define a div with the class "nav-items" for navigation links -->
+        <div class="nav-items">
+            <!-- Create links for "Game Rules," "About," and "Contact" -->
+            <a href="rules.html">Game Rules</a>
+            <a href="about.html">About</a> 
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+    <!-- Create a section with the class "dice" for the dice game content -->
+    <section class="dice">
+        <!-- Create a container for the dice game content -->
+        <div class="dice-container">
+            <!-- Create a left column for game information -->
+            <div class="column-left">
+            <!-- Display a heading for the game -->
+            <h1>Welcome to the Official Yatzy Game!</h1>
+            <!-- Display a paragraph with information about the game's developer -->
+            <p>
+                Developed By Mulex.
+            </p>
+            <!-- Create a link to "play.html" and wrap it in a button element -->
+            <a href="play.html">
+            <button>Play Game</button>
+            </a>
+        </div>
+        <!-- Create a right column for the dice animation -->
+        <div class="column-right">
+            <!-- Display an image for the dice animation with alt text and a class for styling -->
+            <img
+            src="./dice-animation.gif" 
+            alt="illustration" 
+            class="dice-image" 
+            />
+        </div>
+        </div>
+    </section>
+</body>
+</html>
