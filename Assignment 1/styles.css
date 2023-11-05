@@ -1,1 +1,111 @@
+/* Resetting default styles for all elements */
+* {
+  box-sizing: border-box; /* Box model property for accurate sizing */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial Black, sans-serif; /* Set a consistent font family for the entire document */
+}
 
+/* Styling for the navigation bar */
+nav {
+  height: 80px;
+  background: white; /* Background color for the navigation bar */
+  display: flex; /* Use flexbox for layout */
+  font-size: 1.3rem; /* Set font size for navigation text */
+  justify-content: space-between; /* Space elements evenly horizontally */
+  align-items: center; /* Center elements vertically */
+  padding: 0rem calc((100vw - 1300px) / 2); /* Horizontal padding calculation for responsiveness */
+}
+
+/* Styling for the logo within the navigation bar */
+.logo {
+  color: black; /* Text color for the logo */
+  font-size: 1.7rem; /* Font size for the logo */
+  font-weight: bold; /* Bold font weight */
+  font-style: italic; /* Italic font style */
+  padding: 0 2rem; /* Padding around the logo */
+}
+
+/* Styling for navigation links within the navigation bar */
+nav a {
+  font-size: 1.3rem; /* Font size for navigation links */
+  text-decoration: none; /* Remove underlines from links */
+  color: black; /* Text color for links */
+  padding: 0 1.3rem; /* Spacing around links */
+}
+
+/* Styling for the dice container */
+.dice {
+  background: white; /* Background color for the dice container */
+}
+
+/* Styling for the dice container, using grid layout */
+.dice-container {
+  display: grid; /* Use grid layout for the container */
+  grid-template-columns: 1fr 1fr; /* Divide container into two columns */
+  height: 95vh; /* Set the height of the container to 95% of the viewport height */
+  padding: 3rem calc((100vw - 1300px) / 2); /* Horizontal padding calculation for responsiveness */
+  text-align: center; /* Center-align content in the container */
+  margin: 0 auto; /* Center the container horizontally */
+}
+
+/* Styling for the left column in the dice container */
+.column-left {
+  display: flex; /* Use flex layout for the left column */
+  flex-direction: column; /* Display its contents in a column */
+  justify-content: center; /* Center content vertically */
+  align-items: flex-start; /* Align content to the left */
+  color: black; /* Text color for content */
+  padding: 0rem 2rem; /* Spacing around content */
+}
+
+/* Styling for the h1 element within the left column */
+.column-left h1 {
+  margin-bottom: 1rem; /* Spacing below the heading */
+  font-size: 3rem; /* Font size for the heading */
+}
+
+/* Styling for paragraphs within the left column */
+.column-left p {
+  margin-bottom: 2rem; /* Spacing below paragraphs */
+  font-size: 1.5rem; /* Font size for paragraphs */
+  line-height: 1.5; /* Line height for paragraphs */
+}
+
+/* Styling for buttons */
+button {
+  padding: 1rem 3rem; /* Spacing inside the button */
+  font-size: 1rem; /* Font size for the button text */
+  border: none; /* Remove borders */
+  color: white; /* Text color */
+  background: black; /* Background color */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  border-radius: 50px; /* Add border radius for rounded corners */
+}
+
+/* Hover effect for buttons */
+button:hover {
+  background: white; /* Change background color on hover */
+  color: black; /* Change text color on hover */
+}
+
+/* Styling for the right column in the dice container */
+.column-right {
+  display: flex; /* Use flex layout for the right column */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  padding: 0rem 2rem; /* Spacing around content */
+}
+
+/* Styling for the dice image */
+.dice-image {
+  width: 80%; /* Set the width to 80% of its container */
+  height: 50%; /* Set the height to 50% of its container */
+}
+
+/* Media query for responsive design when screen width is 800px or less */
+@media screen and (max-width: 800px) {
+  .dice-container {
+    grid-template-columns: 1fr; /* Change to a single column layout for smaller screens */
+  }
+}
