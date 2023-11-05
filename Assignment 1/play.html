@@ -1,1 +1,392 @@
+<!DOCTYPE html> /* Specifies the document type as HTML */
+<html>
+<head>
+    <meta charset="UTF-8"> /* Declares the character encoding as UTF-8 */
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> /* Specifies the version of Internet Explorer to use */
+    <title>The Game</title> /* Sets the title of the webpage displayed in the browser tab */
+    <link rel="shortcut icon" href="/assets/favicon.ico"> /* Defines a shortcut icon for the website */
+    <link rel="stylesheet" href="/decode.css"> /* Links an external CSS stylesheet */
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> /* Defines the viewport settings for responsive design */
+<style>
+/* Global styles */
+* {
+  box-sizing: border-box; /* Box model for elements */
+  margin: 0; /* Sets margin to zero */
+  padding: 0; /* Sets padding to zero */
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial Black, sans-serif; /* Specifies the font family for text */
+}
 
+/* Navigation bar styles */
+nav {
+  height: 80px; /* Sets the height of the navigation bar */
+  background: white; /* Sets the background color of the navigation bar */
+  display: flex; /* Uses a flexbox layout */
+  font-size: 1.3rem; /* Sets the font size */
+  text-align: center; /* Centers text in the navigation bar */
+  justify-content: space-between; /* Adjusts space between items */
+  align-items: center; /* Centers items vertically */
+  padding: 0rem calc((100vw - 1300px) / 2); /* Sets padding to center the content */
+}
+
+.logo {
+  color: black; /* Sets the color of the logo */
+  font-size: 1.7rem; /* Sets the font size of the logo */
+  font-weight: bold; /* Sets the font weight to bold */
+  font-style: italic; /* Sets the font style to italic */
+  padding: 0 2rem; /* Adds padding to the logo */
+}
+
+nav a {
+  font-size: 1.3rem; /* Sets the font size for navigation links */
+  font-weight: bold; /* Sets the font weight to bold */
+  text-decoration: none; /* Removes underlines from links */
+  color: black; /* Sets the color of the links */
+  padding: 0 1.3rem; /* Adds padding to the links */
+  margin-right: auto; /* Adjusts right margin for alignment */
+}
+
+html,body{
+  background-color: white; /* Sets the background color for the entire document */
+}
+
+#gameContainer{
+  display: flex; /* Uses a flexbox layout */
+  width: 100%; /* Sets the width to 100% of the parent container */
+  height: 100%; /* Sets the height to 100% of the parent container */
+  margin-top: 40px; /* Adds top margin */
+  align-content: center; /* Aligns content in the center */
+  justify-content: center; /* Justifies content in the center */
+}
+
+/* Table styles */
+.table {
+  display: table; /* Defines the element as a table */
+  border-collapse: collapse; /* Sets table border-collapse */
+  width: 30%; /* Sets the width of the table */
+  background: linear-gradient(to bottom, white, white); /* Applies a linear gradient background */
+  cursor: pointer; /* Changes the cursor to a pointer on hover */
+  border-top-right-radius: 10px; /* Adds border radius to the top right corner */
+  border-top-left-radius: 10px; /* Adds border radius to the top left corner */
+  color: black; /* Sets the text color to black */
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; /* Specifies the font family for text */
+  font-size: 20px; /* Sets the font size */
+  margin: 30px; /* Adds margin */
+}
+
+.header {
+  display: table-header-group; /* Defines the element as a table header group */
+  background-color: black; /* Sets the background color for the header */
+}
+
+.header-cell {
+  display: table-cell; /* Defines the element as a table cell */
+  padding: 7px; /* Adds padding */
+  text-align: center; /* Centers text */
+  width: 20%; /* Sets the width of the cell */
+  border-color: whitesmoke; /* Sets the border color */
+  color: whitesmoke; /* Sets the text color */
+  font-size: 12px; /* Sets the font size */
+}
+
+.header-cell:first-child {
+  border-top-left-radius: 10px; /* Adds border radius to the top left cell */
+}
+
+.header-cell:last-child {
+  border-top-right-radius: 10px; /* Adds border radius to the top right cell */
+}
+
+.row {
+  display: table-row; /* Defines the element as a table row */
+}
+
+.row:last-child {
+  font-size: 18px; /* Sets the font size for the last row */
+  font-weight: bold; /* Sets the font weight to bold */
+  border-top: 2px solid black; /* Adds a top border */
+}
+
+.cell {
+  display: table-cell; /* Defines the element as a table cell */
+  border: 1px solid; /* Sets the border with a 1px solid line */
+  padding: 7px; /* Adds padding */
+  text-align:center; /* Centers text */
+  width: 20%; /* Sets the width of the cell */
+  border-color: black; /* Sets the border color to black */
+  color: black; /* Sets the text color to black */
+  font-size: 12px; /* Sets the font size */
+}
+
+.cell:first-child {
+  width: 60%; /* Sets the width of the first cell */
+  text-align:left; /* Aligns text to the left */
+  font-weight: bold; /* Sets the font weight to bold */
+}
+
+#totalCaption {
+  font-size: 18px; /* Sets the font size */
+}
+ 
+#bonusCaption {
+  border-bottom: 2px solid black; /* Adds a bottom border */
+}
+
+#sumCaption {
+   border-top: 2px solid black; /* Adds a top border */
+ }
+
+#bonusCaption > *,sumCaption > * {
+   font-weight: bold; /* Sets the font weight to bold for children elements */
+ }
+
+/* Board styles */
+#board{
+  background:url(https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Looking_across_lake%2C_%22McDonald_Lake%2C_Glacier_National_Park%2C%22_Montana.%2C_1933_-_1942_-_NARA_-_519873.tif/lossy-page1-1280px-Looking_across_lake%2C_%22McDonald_Lake%2C_Glacier_National_Park%2C%22_Montana.%2C_1933_-_1942_-_NARA_-_519873.tif.jpg);
+  background-repeat: no-repeat; /* Sets the background image to not repeat */
+  background-size: cover; /* Sets the background size to cover the container */
+  width: 60%; /* Sets the width to 60% */
+  min-height: 80%; /* Sets the minimum height to 80% */
+  margin: 20px; /* Adds margin */
+  border: 20px solid white; /* Sets a 20px solid white border */
+  border-radius: 10px; /* Adds a border radius of 10px */
+  background-color: white; /* Sets the background color to white */
+  background-blend-mode: darken; /* Applies background blending mode */
+}
+
+#playArea {
+  min-height: 80%; /* Sets the minimum height to 80% */
+  display: flex; /* Uses a flexbox layout */
+  justify-content: flex-end; /* Justifies content to the flex end */
+}
+
+.dice-container {
+  height: 10%; /* Sets the height to 10% */
+  display: flex; /* Uses a flexbox layout */
+  align-items: center; /* Aligns items to the center vertically */
+  justify-content: center; /* Justifies content to the center horizontally */
+  gap: 2%; /* Sets the gap between items to 2% */
+  background: gray; /* Sets the background color to gray */
+  margin-top: auto; /* Adds margin to the top */
+}
+
+.dice {
+  max-width: 40px; /* Sets the maximum width to 40px */
+  max-height: 40px; /* Sets the maximum height to 40px */
+  border-radius: 10px; /* Adds a border radius of 10px */
+  transition: all 0.4s linear; /* Adds a transition effect for all properties over 0.4 seconds with linear timing */
+  z-index: 1000; /* Sets the stacking order to 1000 */
+}
+
+.face {
+  width: 100%; /* Sets the width to 100% */
+  height: 100%; /* Sets the height to 100% */
+  cursor: pointer; /* Changes the cursor to a pointer */
+  transition: all 0.4s linear; /* Adds a transition effect for all properties over 0.4 seconds with linear timing */
+}
+
+.face:hover {
+  transform: scale(1.1); /* Scales the size by 10% on hover */
+}
+
+#endGameMessage {
+  align-self: center; /* Aligns self to the center */
+  color: yellow; /* Sets the text color to yellow */
+  font-size: 80px; /* Sets the font size to 80px */
+  width: 100%; /* Sets the width to 100% */
+  text-align: center; /* Centers the text horizontally */
+  transform: translate(5%); /* Translates horizontally by 5% */
+}
+
+#roll {
+  width: 50px; /* Sets the width to 50px */
+  height: 50px; /* Sets the height to 50px */
+  border-radius: 50%; /* Adds a border radius of 50% for a circular shape */
+  border: transparent; /* Sets the border to transparent */
+  align-self: flex-end; /* Aligns self to the flex end */
+  color: black; /* Sets the text color to black */
+  font-weight: bold; /* Sets the font weight to bold */
+  background-image: url("button.png"); /* Sets a background image for the button */
+  background-size: cover; /* Sets the background size to cover */
+}
+
+#roll:hover {
+  transform: scale(1.1); /* Scales the size by 10% on hover */
+}
+</style>
+</head>
+
+
+<body>
+  <nav>
+      <!-- Logo -->
+      <div class = "logo">Mulex</div>
+      <div class = "nav-items">
+          <a href = "#" id = "refreshLink">Restart Game</a> <!-- Link to restart the game -->
+          <script>
+              var refreshLink = document.getElementById("refreshLink");
+              refreshLink.addEventListener("click", function(event) {
+                  event.preventDefault();
+                  location.reload(); // Reloads the page to restart the game
+              });
+          </script>
+          <a href = "javascript:history.back()">Leave Game</a> <!-- Link to go back in history (leave the game) -->
+      </div>
+  </nav>
+<body> <!-- This opening <body> tag should be a closing </body> tag -->
+
+  <div id = "gameContainer">
+      <div id="board">
+          <div class = "dice-container" id = "player2Container"></div> <!-- Container for player 2's dice -->
+          <div id = "playArea">
+              <div id = "endGameMessage"></div> <!-- Display end game message -->
+              <button id = "roll" class = "image-button">ROLL</button> <!-- Button to roll the dice -->
+          </div>
+
+          <div class = "dice-container" id = "player1Container"> <!-- Container for player 1's dice -->
+              <div class = "dice" id = "die1">
+                  <img src = "dice1.png" class = "face"> <!-- Display a dice face (dice 1) -->
+              </div>
+
+              <div class="dice" id="die2">
+                  <img src = "dice2.png" class = "face"> <!-- Display a dice face (dice 2) -->
+              </div>
+
+              <div class="dice" id="die3">
+                  <img src = "dice3.png" class = "face"> <!-- Display a dice face (dice 3) -->
+              </div>
+
+              <div class="dice" id="die4">
+                  <img src = "dice4.png" class = "face"> <!-- Display a dice face (dice 4) -->
+              </div>
+
+              <div class="dice" id="die5">
+                  <img src = "dice5.png" class = "face"> <!-- Display a dice face (dice 5) -->
+              </div>
+          </div>
+      </div>
+  </div>
+</body>
+
+
+<div id="scoreTable" class="table">
+  <div class="header">
+    <div class="header-cell"></div> <!-- Empty header cell -->
+    <div class="header-cell">Player 1</div> <!-- Header cell for Player 1 -->
+    <div class="header-cell">Player 2</div> <!-- Header cell for Player 2 -->
+  </div>
+
+  <!-- Rows for scoring categories -->
+  <div class="row">
+    <div class="cell">Ones</div> <!-- Scoring category: Ones -->
+    <div class="cell" id="ones1" data-row="1" data-column="1"></div> <!-- Player 1's score for Ones -->
+    <div class="cell" id="ones2" data-row="1" data-column="2"></div> <!-- Player 2's score for Ones -->
+  </div>
+
+  <div class="row">
+    <div class="cell">Twos</div> <!-- Scoring category: Twos -->
+    <div class="cell" id="twos1" data-row="2" data-column="1"></div> <!-- Player 1's score for Twos -->
+    <div class="cell" id="twos2" data-row="2" data-column="2"></div> <!-- Player 2's score for Twos -->
+  </div>
+
+  <!-- Scoring categories for Threes -->
+  <div class="row">
+    <div class="cell">Threes</div> <!-- Scoring category: Threes -->
+    <div class="cell" id="threes1" data-row="3" data-column="1"></div> <!-- Player 1's score for Threes -->
+    <div class="cell" id="threes2" data-row="3" data-column="2"></div> <!-- Player 2's score for Threes -->
+  </div>
+
+<!-- Scoring categories for Fours -->
+  <div class="row">
+    <div class="cell">Fours</div> <!-- Scoring category: Fours -->
+    <div class="cell" id="fours1" data-row="4" data-column="1"></div> <!-- Player 1's score for Fours -->
+    <div class="cell" id="fours2" data-row="4" data-column="2"></div> <!-- Player 2's score for Fours -->
+  </div>
+
+<!-- Scoring categories for Fives -->
+<div class="row">
+  <div class="cell">Fives</div> <!-- Scoring category: Fives -->
+  <div class="cell" id="fives1" data-row="5" data-column="1"></div> <!-- Player 1's score for Fives -->
+  <div class="cell" id="fives2" data-row="5" data-column="2"></div> <!-- Player 2's score for Fives -->
+</div>
+
+<!-- Scoring categories for Sixes -->
+  <div class="row">
+    <div class="cell">Sixes</div> <!-- Scoring category: Sixes -->
+    <div class="cell" id="sixes1" data-row="6" data-column="1"></div> <!-- Player 1's score for Sixes -->
+    <div class="cell" id="sixes2" data-row="6" data-column="2"></div> <!-- Player 2's score for Sixes -->
+  </div>
+
+
+  <!-- Total and Bonus rows -->
+  <div class="row" id="sumCaption">
+    <div class="cell">Sum</div> <!-- Total sum of scores -->
+    <div class="cell" id="sum1"></div> <!-- Player 1's total sum -->
+    <div class="cell" id="sum2"></div> <!-- Player 2's total sum -->
+  </div>
+
+  <div class="row" id="bonusCaption">
+    <div class="cell">Bonus</div> <!-- Bonus score -->
+    <div class="cell" id="bonus1"></div> <!-- Player 1's bonus score -->
+    <div class="cell" id="bonus2"></div> <!-- Player 2's bonus score -->
+  </div>
+
+    <!-- Scoring categories for Three of a Kind -->
+    <div class="row">
+      <div class="cell">Three of a Kind</div> <!-- Scoring category: Three of a Kind -->
+      <div class="cell" id="threeOfAKind1" data-row="7" data-column="1"></div> <!-- Player 1's score for Three of a Kind -->
+      <div class="cell" id="threeOfAKind2" data-row="7" data-column="2"></div> <!-- Player 2's score for Three of a Kind -->
+    </div>
+  
+    <!-- Scoring categories for Four of a Kind -->
+    <div class="row">
+      <div class="cell">Four of a Kind</div> <!-- Scoring category: Four of a Kind -->
+      <div class="cell" id="fourOfAKind1" data-row="8" data-column="1"></div> <!-- Player 1's score for Four of a Kind -->
+      <div class="cell" id="fourOfAKind2" data-row="8" data-column="2"></div> <!-- Player 2's score for Four of a Kind -->
+    </div>
+  
+    <!-- Scoring categories for Full House -->
+    <div class="row">
+      <div class="cell">Full House</div> <!-- Scoring category: Full House -->
+      <div class="cell" id="fullHouse1" data-row="9" data-column="1"></div> <!-- Player 1's score for Full House -->
+      <div class="cell" id="fullHouse2" data-row="9" data-column="2"></div> <!-- Player 2's score for Full House -->
+    </div>
+  
+    <!-- Scoring categories for Small Straight -->
+    <div class="row">
+      <div class="cell">Small Straight</div> <!-- Scoring category: Small Straight -->
+      <div class="cell" id="smallStraight1" data-row="10" data-column="1"></div> <!-- Player 1's score for Small Straight -->
+      <div class="cell" id="smallStraight2" data-row="10" data-column="2"></div> <!-- Player 2's score for Small Straight -->
+    </div>
+  
+    <!-- Scoring categories for Large Straight -->
+    <div class="row">
+      <div class="cell">Large Straight</div> <!-- Scoring category: Large Straight -->
+      <div class="cell" id="largeStraight1" data-row="11" data-column="1"></div> <!-- Player 1's score for Large Straight -->
+      <div class="cell" id="largeStraight2" data-row="11" data-column="2"></div> <!-- Player 2's score for Large Straight -->
+    </div>
+  
+    <!-- Scoring categories for Chance -->
+    <div class="row">
+      <div class="cell">Chance</div> <!-- Scoring category: Chance -->
+      <div class="cell" id="chance1" data-row="12" data-column="1"></div> <!-- Player 1's score for Chance -->
+      <div class="cell" id="chance2" data-row="12" data-column="2"></div> <!-- Player 2's score for Chance -->
+    </div>
+  
+    <!-- Scoring categories for Yatzy -->
+    <div class="row">
+      <div class="cell">Yatzy</div> <!-- Scoring category: Yatzy -->
+      <div class="cell" id="yahtzee1" data-row="13" data-column="1"></div> <!-- Player 1's score for Yatzy -->
+      <div class="cell" id="yahtzee2" data-row="13" data-column="2"></div> <!-- Player 2's score for Yatzy -->
+    </div>
+  </div>
+
+  <!-- Row for the total score -->
+  <div class="row">
+    <div class="cell" id="totalCaption">Total</div> <!-- Total score label -->
+    <div class="cell" id="total" data-row="14" data-column="1"></div> <!-- Player 1's total score -->
+    <div class="cell" id="total" data-row="14" data-column="2"></div> <!-- Player 2's total score -->
+  </div>
+</div>
+    <script src = "game.js"></script>
+</body>
+</html>
