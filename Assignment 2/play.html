@@ -1,0 +1,385 @@
+// Yatzy Html Website
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>The Game</title>
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" href="/decode.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial Black, sans-serif;
+}
+
+
+nav {
+  height: 80px;
+  background: white;
+  display: flex;
+  font-size: 1.3rem;
+  text-align: center;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0rem calc((100vw - 1300px) / 2);
+}
+
+.logo {
+  color: black;
+  font-size: 1.7rem;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0 2rem;
+}
+
+nav a {
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+  padding: 0 1.3rem;
+  margin-right: auto;
+}
+
+html,body{
+  background-color: white;
+}
+
+#gameContainer{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  margin-top: 40px;
+  align-content: center;
+  justify-content: center;
+}
+
+.table {
+  display: table;
+  border-collapse: collapse;
+  width:30%;
+  background: linear-gradient(to bottom, white, white);
+  cursor: pointer;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  color:black;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 20px;
+  margin: 30px;
+}
+
+.header {
+  display: table-header-group;
+  background-color: black;
+}
+
+.header-cell {
+  display: table-cell;
+  padding: 7px;
+  text-align: center;
+  width: 20%;
+  border-color: whitesmoke;
+  color: whitesmoke;
+  font-size: 12px;
+}
+
+.header-cell:first-child {
+  border-top-left-radius: 10px;
+}
+
+.header-cell:last-child {
+  border-top-right-radius: 10px;
+}
+
+.row {
+  display: table-row;
+}
+
+.row:last-child {
+  font-size: 18px;
+  font-weight: bold;
+  border-top: 2px solid black;
+}
+
+.cell {
+  display: table-cell;
+  border: 1px solid;
+  padding: 7px;
+  text-align:center;
+  width: 20%;
+  border-color: black;
+  color: black;
+  font-size: 12px;
+}
+
+.cell:first-child {
+  width: 60%;
+  text-align:left;
+  color: black;
+  font-weight: bold; 
+}
+
+#totalCaption {
+  font-size: 18px;
+}
+ 
+#bonusCaption {
+  border-bottom: 2px solid black;
+}
+
+#sumCaption {
+   border-top: 2px solid black;
+ }
+
+#bonusCaption > *,sumCaption > * {
+   font-weight: bold;
+ }
+                  
+#board{
+  background:url(https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Looking_across_lake%2C_%22McDonald_Lake%2C_Glacier_National_Park%2C%22_Montana.%2C_1933_-_1942_-_NARA_-_519873.tif/lossy-page1-1280px-Looking_across_lake%2C_%22McDonald_Lake%2C_Glacier_National_Park%2C%22_Montana.%2C_1933_-_1942_-_NARA_-_519873.tif.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width:60%;
+  min-height: 80%;
+  margin: 20px;
+  border: 20 px solid white;
+  border-radius: 10px;
+  background-color: white;
+  background-blend-mode: darken;
+}
+
+#playArea {
+  min-height: 80%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.dice-container {
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2%;
+  background: gray;
+  margin-top: auto;
+}
+
+.dice {
+  max-width: 40px;
+  max-height: 40px;
+  border-radius: 10px;
+  transition: all 0.4s linear;
+  z-index: 1000;
+}
+
+.face{
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  transition: all 0.4s linear;
+}
+
+.face:hover{
+  transform: scale(1.1);
+}
+
+#endGameMessage {
+  align-self: center;
+  color: yellow;
+  font-size: 80px;
+  width: 100%;
+  text-align: center;
+  transform: translate(5%);
+}
+
+#roll {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: transparent;
+  align-self: flex-end;
+  color: black;
+  font-weight: bold;
+  background-image: url("button.png");
+  background-size: cover;
+}
+
+#roll:hover {
+  transform: scale(1.1);
+}
+
+@keyframes roll {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: -600% 0;
+            }
+        }
+</style>
+</head>
+
+<body>
+    <nav>
+        <!-- Logo -->
+        <div class="logo">Mulex</div>
+        <div class="nav-items">
+          <a href="#" id="refreshLink">Restart Game</a>
+          <script>
+            var refreshLink = document.getElementById("refreshLink");
+            refreshLink.addEventListener("click", function(event) {
+              event.preventDefault();
+              location.reload();
+         });
+
+          </script>
+            <a href="javascript:history.back()">Leave Game</a>
+        </div>
+    </nav>
+<body>
+  <div id="gameContainer">
+  <div id = "board">
+      <div class = "dice-container" id="player2Container"></div>
+      <div id = "playArea">
+        <div id = "endGameMessage"></div>
+        <button id = "roll" class="image-button">ROLL</button>
+      </div>
+
+      <div class = "dice-container" id = "player1Container">
+        <div class = "dice" id="die1">
+          <img src = "dice1.png" class="face">
+        </div>
+
+        <div class = "dice" id="die2">
+          <img src = "dice2.png" class="face">
+        </div>
+
+        <div class = "dice" id="die3">
+          <img src = "dice3.png" class="face">
+        </div>
+
+        <div class = "dice" id="die4">
+          <img src = "dice4.png" class="face">
+        </div>
+
+        <div class = "dice" id="die5">
+          <img src = "dice5.png" class="face">
+        </div>
+      </div>
+
+  </div>
+
+  <div id = "scoreTable" class="table">
+  <div class = "header">
+    <div class="header-cell"></div>
+    <div class="header-cell">Player 1</div>
+    <div class="header-cell">Player 2</div>
+  </div>
+
+  <div class="row">
+    <div class = "cell">Ones</div>
+    <div class = "cell" id="ones1" data-row="1" data-column="1"></div>
+    <div class = "cell" id="ones2" data-row="1" data-column="2"></div>
+  </div>
+
+  <div class="row">
+    <div class = "cell">Twos</div>
+    <div class = "cell" id="twos1" data-row="2" data-column="1"></div>
+    <div class = "cell" id="twos2" data-row="2" data-column="2"></div>
+  </div>
+
+  <div class="row">
+    <div class = "cell">Threes</div>
+    <div class = "cell" id="threes1" data-row="3" data-column="1"></div>
+    <div class = "cell" id="threes2" data-row="3" data-column="2"></div>
+  </div>
+
+  <div class="row">
+    <div class = "cell">Fours</div>
+    <div class = "cell" id="fours1" data-row="4" data-column="1"></div>
+    <div class = "cell" id="fours2" data-row="4" data-column="2"></div>
+  </div>
+
+  <div class="row">
+    <div class = "cell">Fives</div>
+    <div class = "cell" id="fives1" data-row="5" data-column="1"></div>
+    <div class = "cell" id="fives2" data-row="5" data-column="2"></div>
+  </div>
+
+  <div class="row">
+    <div class = "cell">Sixes</div>
+    <div class = "cell" id="sixes1" data-row="6" data-column="1"></div>
+    <div class = "cell" id="sixes2" data-row="6" data-column="2"></div>
+  </div>
+
+  <div class="row" id="sumCaption">
+    <div class = "cell">Sum</div>
+    <div class = "cell" id="sum1"></div>
+    <div class = "cell" id="sum2"></div>
+  </div>
+
+  <div class="row" id="bonusCaption">
+    <div class = "cell">Bonus</div>
+    <div class = "cell" id="bonus1"></div>
+    <div class = "cell" id="bonus2"></div>
+  </div>
+
+  <div class="row">
+    <div class = "cell">Three of a Kind</div>
+    <div class="cell" id="threeOfAKind1" data-row="7" data-column="1"></div>
+    <div class="cell" id="threeOfAKind2" data-row="7" data-column="2"></div>
+  </div>
+
+  <div class="row">
+    <div class = "cell">Four of a Kind</div>
+    <div class = "cell" id="fourOfAKind1" data-row="8" data-column="1"></div>
+    <div class = "cell" id="fourOfAKind2" data-row="8" data-column="2"></div>
+  </div>
+
+  <div class="row">
+    <div class = "cell">Full House</div>
+    <div class = "cell" id="fullHouse1" data-row="9" data-column="1"></div>
+    <div class = "cell" id="fullHouse2" data-row="9" data-column="2"></div>
+  </div>
+
+  <div class="row">
+    <div class = "cell">Small Straight</div>
+    <div class = "cell" id="smallStraight1" data-row="10" data-column="1"></div>
+    <div class = "cell" id="smallStraight2" data-row="10" data-column="2"></div>
+  </div>
+
+  <div class="row">
+    <div class = "cell">Large Straight</div>
+    <div class = "cell" id="largeStraight1" data-row="11" data-column="1"></div>
+    <div class = "cell" id="largeStraight2" data-row="11" data-column="2"></div>
+  </div>
+
+  <div class="row">
+    <div class = "cell">Chance</div>
+    <div class = "cell" id="chance1" data-row="12" data-column="1"></div>
+    <div class = "cell" id="chance2" data-row="12" data-column="2"></div>
+  </div>
+
+  <div class="row">
+    <div class = "cell">Yatzy</div>
+    <div class = "cell" id="yahtzee1" data-row="13" data-column="1"></div>
+    <div class = "cell" id="yahtzee2" data-row="13" data-column="2"></div>
+  </div>
+
+  <div class="row">
+    <div class = "cell" id="totalCaption">Total</div>
+    <div class = "cell" id="total" data-row="14" data-column="1"></div>
+    <div class = "cell" id="total" data-row="14" data-column="2"></div>
+  </div>
+</div>
+    <script src = "game.js"></script>
+    <script src="clientcode.js"></script>
+    <script src="dicemodule.js"></script>
+</body>
+</html>
